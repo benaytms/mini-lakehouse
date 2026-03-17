@@ -5,7 +5,7 @@ load_dotenv()
 
 BUCKET_NAME=str(os.getenv('BUCKET_NAME'))
 ENDPOINT=str(os.getenv('ENDPOINT'))
-REGION=str(os.getenv('REGIOIN'))
+REGION=str(os.getenv('REGION'))
 SOURCE_URL=str(os.getenv('SOURCE_URL'))
 DB_SYSTEM=str(os.getenv('DB_SYSTEM'))
 #DB_DIALECT=str(os.getenv('DB_DIALECT'))

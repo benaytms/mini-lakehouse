@@ -10,7 +10,7 @@ from config import BUCKET_NAME, ENDPOINT, REGION
 from bronze import  make_connection, get_today
 
 
-def get_json_from_s3(client, today):
+def get_json_from_s3(client, today:str):
     response = client.get_object(
         Bucket=BUCKET_NAME,
         Key=f'bronze/covid19/{today}.json'
@@ -18,7 +18,7 @@ def get_json_from_s3(client, today):
     return json.loads(response['Body'].read())
 
 
-def parse_json(client, today):
+def parse_json(client, today:str)->pd.DataFrame:
     data = get_json_from_s3(client, today)
 
     df = pd.json_normalize(data, sep='.')
@@ -81,7 +81,7 @@ def parse_json(client, today):
     return df
 
 
-def send_silver(client):
+def silver_layer(client)->bool:
     today = get_today()
     df = parse_json(client, today)
 
@@ -109,7 +109,7 @@ def send_silver(client):
 
 
 if __name__ == "__main__":
-    if send_silver(make_connection(ENDPOINT, REGION)):
+    if silver_layer(make_connection(ENDPOINT, REGION)):
         print("Silver layer successfully executed!")
     else:
         print("Something Went Wrong in the Silver Phase")

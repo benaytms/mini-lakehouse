@@ -39,7 +39,7 @@ def separate_df(client):
 
     return (df_countries, df_covid_cases)
 
-def upsert_df(df, table_name, conflict_cols):
+def upsert_df(df:pd.DataFrame, table_name:str, conflict_cols:list[str]):
     conn = get_connection()
     try:
         with conn.cursor() as cur:
@@ -59,7 +59,7 @@ def upsert_df(df, table_name, conflict_cols):
     finally:
         conn.close()
 
-def add_dfs_to_tables(client)->bool:
+def gold_layer(client)->bool:
     try:
         (df_countries, df_covid_cases) = separate_df(client)
 
@@ -73,7 +73,7 @@ def add_dfs_to_tables(client)->bool:
         raise
 
 if __name__ == "__main__":
-    if add_dfs_to_tables(make_connection(ENDPOINT, REGION)):
+    if gold_layer(make_connection(ENDPOINT, REGION)):
         print("Gold layer successfully executed!")
     else:
         print("Something Went Wrong in the Gold Phase")

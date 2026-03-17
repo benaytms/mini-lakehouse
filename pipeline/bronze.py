@@ -3,7 +3,7 @@
     Then sends to the bronze directory inside the bucket
 """
 
-from pipeline.config import BUCKET_NAME, ENDPOINT, REGION, SOURCE_URL
+from config import BUCKET_NAME, ENDPOINT, REGION, SOURCE_URL
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import requests as rq
@@ -30,7 +30,7 @@ def get_today()->str:
     return datetime.now(ZoneInfo("America/Sao_Paulo")).date().isoformat()
 
 
-def fetch_bronze(client)->bool:
+def bronze_layer(client)->bool:
     today = get_today()
     key = f'bronze/covid19/{today}.json'
     for attempt in range(1,6):
@@ -54,7 +54,7 @@ def fetch_bronze(client)->bool:
     return False
 
 if __name__ == '__main__':
-    if fetch_bronze(make_connection(ENDPOINT,REGION)):
+    if bronze_layer(make_connection(ENDPOINT,REGION)):
         print("Bronze layer successfully executed!")
     else:
         print("Something Went Wrong in the Bronze Phase")
