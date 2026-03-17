@@ -1,4 +1,4 @@
-CREATE TABLE countries (
+CREATE TABLE IF NOT EXISTS countries (
     iso3 TEXT PRIMARY KEY,
     country TEXT,
     continent TEXT,
@@ -9,7 +9,7 @@ CREATE TABLE countries (
     country_flag TEXT
 );
 
-CREATE TABLE covid_cases (
+CREATE TABLE IF NOT EXISTS covid_cases (
     iso3 TEXT,
     date DATE NOT NULL,
     one_case_per_people BIGINT,
