@@ -11,3 +11,5 @@ terraform.tfstate.backup
 *.ipynb
 .ipynb_checkpoints
 notebooks/
+uv.lock
+.python-version

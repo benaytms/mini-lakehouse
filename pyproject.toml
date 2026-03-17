@@ -1,7 +1,7 @@
 [project]
 name = "mini-data-lakehouse"
 version = "0.1.0"
-description = "Add your description here"
+description = "List of requirements for the project"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
