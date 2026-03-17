@@ -3,9 +3,9 @@
     And parses it into a PostgreSQL table
 """
 
-from config import BUCKET_NAME, ENDPOINT, REGION
-from config import POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, HOST, PORT
-from bronze import make_connection, get_today
+from pipeline.config import BUCKET_NAME, ENDPOINT, REGION
+from pipeline.config import POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, HOST, PORT
+from pipeline.bronze import make_connection, get_today
 import pandas as pd
 import psycopg2
 import io

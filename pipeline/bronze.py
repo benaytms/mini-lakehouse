@@ -3,7 +3,7 @@
     Then sends to the bronze directory inside the bucket
 """
 
-from config import BUCKET_NAME, ENDPOINT, REGION, SOURCE_URL
+from pipeline.config import BUCKET_NAME, ENDPOINT, REGION, SOURCE_URL
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import requests as rq

@@ -6,8 +6,8 @@
 import pandas as pd
 import io
 import json
-from config import BUCKET_NAME, ENDPOINT, REGION
-from bronze import  make_connection, get_today
+from pipeline.config import BUCKET_NAME, ENDPOINT, REGION
+from pipeline.bronze import  make_connection, get_today
 
 
 def get_json_from_s3(client, today:str):
