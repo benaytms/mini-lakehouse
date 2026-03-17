@@ -52,7 +52,7 @@ API → S3/bronze/ (JSON) → S3/silver/ (Parquet) → PostgreSQL (Gold)
 - [Terraform](https://developer.hashicorp.com/terraform/install)
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- [Makefile](https://stackoverflow.com/questions/32127524/how-can-i-install-and-use-make-in-windows)
+- [Makefile](https://stackoverflow.com/questions/32127524/how-can-i-install-and-use-make-in-windows) (if you don't have Make, you can also just see the commands in the Makefile and execute them yourself, but i strongly recommend using Make)
 
 ---
 
