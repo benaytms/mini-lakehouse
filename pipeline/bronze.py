@@ -3,20 +3,12 @@
     Then sends to the bronze directory inside the bucket
 """
 
-import requests as rq
-import boto3 as b3
+from pipeline.config import BUCKET_NAME, ENDPOINT, REGION, SOURCE_URL
 from datetime import datetime
 from zoneinfo import ZoneInfo
+import requests as rq
+import boto3 as b3
 import json
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-BUCKET_NAME=str(os.getenv('BUCKET_NAME'))
-ENDPOINT=str(os.getenv('ENDPOINT'))
-REGION=str(os.getenv('REGIOIN'))
-SOURCE_URL=str(os.getenv('SOURCE_URL'))
 
 
 def make_connection(ENDPOINT,REGION):
@@ -63,7 +55,7 @@ def fetch_bronze(client)->bool:
 
 if __name__ == '__main__':
     if fetch_bronze(make_connection(ENDPOINT,REGION)):
-        print(f"Success!")
+        print("Bronze layer successfully executed!")
     else:
-        print(f"Something Went Wrong")
+        print("Something Went Wrong in the Bronze Phase")
 

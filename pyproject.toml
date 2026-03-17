@@ -10,7 +10,9 @@ dependencies = [
     "dotenv>=0.9.9",
     "jupyter>=1.1.1",
     "pandas>=3.0.1",
+    "psycopg2-binary>=2.9.11",
     "pyarrow>=23.0.1",
+    "sqlalchemy>=2.0.48",
 ]
 
 [dependency-groups]

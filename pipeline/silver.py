@@ -6,7 +6,7 @@
 import pandas as pd
 import io
 import json
-from bronze import BUCKET_NAME, ENDPOINT, REGION
+from config import BUCKET_NAME, ENDPOINT, REGION
 from bronze import  make_connection, get_today
 
 
@@ -29,43 +29,55 @@ def parse_json(client, today):
     df = df.rename(columns={
         'countryInfo.iso2': 'iso2',
         'countryInfo.iso3': 'iso3',
-        'countryInfo.lat': 'lat',
-        'countryInfo.long': 'long',
-        'countryInfo.flag': 'flag',
-        'active': 'activePeople',
-        'population': 'populationCount'
+        'countryInfo.lat': 'latitude',
+        'countryInfo.long': 'longitude',
+        'countryInfo.flag': 'country_flag',
+        'active': 'active_people',
+        'population': 'population_count',
+        'todayCases': 'today_cases',
+        'todayDeaths': 'today_deaths',
+        'todayRecovered': 'today_recovered',
+        'casesPerOneMillion': 'cases_per_one_million',
+        'deathsPerOneMillion': 'deaths_per_one_million',
+        'testsPerOneMillion': 'tests_per_one_million',
+        'oneCasePerPeople': 'one_case_per_people',
+        'oneDeathPerPeople': 'one_death_per_people',
+        'oneTestPerPeople': 'one_test_per_people',
+        'activePerOneMillion': 'active_per_one_million',
+        'recoveredPerOneMillion': 'recovered_per_one_million',
+        'criticalPerOneMillion': 'critical_per_one_million',
     })
 
     correct_dtypes: dict = {
         "country": "string",
         "cases": "Int64",
-        "todayCases": "Int64",
+        "today_cases": "Int64",
         "deaths": "Int64",
-        "todayDeaths": "Int64",
+        "today_deaths": "Int64",
         "recovered": "Int64",
-        "todayRecovered": "Int64", 
-        "activePeople": "Int64",
+        "today_recovered": "Int64",
+        "active_people": "Int64",
         "critical": "Int64",
-        "casesPerOneMillion": "Int64",
-        "deathsPerOneMillion": "Int64",
+        "cases_per_one_million": "Int64",
+        "deaths_per_one_million": "Int64",
         "tests": "Int64",
-        "testsPerOneMillion": "Int64",
-        "populationCount": "Int64",
+        "tests_per_one_million": "Int64",
+        "population_count": "Int64",
         "continent": "string",
-        "oneCasePerPeople": "Int64",
-        "oneDeathPerPeople": "Int64",
-        "oneTestPerPeople": "Int64",
-        "activePerOneMillion": "float64",
-        "recoveredPerOneMillion": "float64",
-        "criticalPerOneMillion": "float64",
+        "one_case_per_people": "Int64",
+        "one_death_per_people": "Int64",
+        "one_test_per_people": "Int64",
+        "active_per_one_million": "float64",
+        "recovered_per_one_million": "float64",
+        "critical_per_one_million": "float64",
         "iso2": "string",
         "iso3": "string",
-        "lat": "float64",
-        "long": "float64",
-        "flag": "string"
+        "latitude": "float64",
+        "longitude": "float64",
+        "country_flag": "string"
     }
-
     df = df.astype(correct_dtypes)
+    df = df.dropna(subset=['iso3'])         # guarantees won't have null primary keys
     return df
 
 
@@ -98,8 +110,8 @@ def send_silver(client):
 
 if __name__ == "__main__":
     if send_silver(make_connection(ENDPOINT, REGION)):
-        print(f"Success!")
+        print("Silver layer successfully executed!")
     else:
-        print(f"Something Went Wrong.")
+        print("Something Went Wrong in the Silver Phase")
 
 
