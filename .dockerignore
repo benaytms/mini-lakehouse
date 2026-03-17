@@ -1,9 +1,6 @@
-.env
-*/.env
-terraform/.terraform.lock.hcl
-__pycache__/
-*.pyc
 .venv
+.env
+__pycache__
 *.pyc
 .terraform
 terraform.tfstate
