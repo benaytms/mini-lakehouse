@@ -1,12 +1,7 @@
 # "Mini" Lakehouse Implementation
 
-This project uses a series of data engineering tools to produce
-a similar structure to a Lakehouse (Data Lake + Data Warehouse).
-
-The purpose of a Lakehouse is to have both the long-term "cold" data,
-records that are not intended to be accessed with frequency and serve more
-to keep history like from Data Lakes, and short-term "fresh" data, which are records 
-intended for quick and efficient access like from Data Warehouses.
+A local data lakehouse implementation built with data engineering tools,
+designed to mirror real-world pipeline architecture at a small scale.
 
 ---
 
