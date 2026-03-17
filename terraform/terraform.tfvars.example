@@ -1,0 +1,1 @@
+s3_bucket_name = "<choose-bucket-name>" # it needs to be the same from .env

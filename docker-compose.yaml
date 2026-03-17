@@ -4,6 +4,7 @@ services:
       container_name: localstack
       environment:
         SERVICES: s3
+        DEFAULT_REGION: ${REGION}
       volumes:
         - localstack_vol:/var/lib/localstack
       ports:
@@ -12,10 +13,12 @@ services:
     pgdatabase:
       image: postgres:17
       container_name: pgdatabase
+      env_file:
+        - .env
       environment:
-        POSTGRES_USER: root
-        POSTGRES_PASSWORD: root
-        POSTGRES_DB: lakehouse
+        - POSTGRES_USER=${POSTGRES_USER}
+        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        - POSTGRES_DB=${POSTGRES_DB}
       volumes:
         - lakehouse_vol:/var/lib/postgresql/data
       ports:
