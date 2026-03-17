@@ -21,6 +21,15 @@ services:
       ports:
         - "5433:5432"
 
+    pipeline:
+      container_name: lakehouse_pipeline
+      build: .
+      env_file:
+        - .env
+      depends_on:
+        - localstack
+        - pgdatabase
+
 volumes:
   localstack_vol:
   lakehouse_vol:
