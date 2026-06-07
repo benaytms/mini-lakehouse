@@ -9,7 +9,7 @@ Contains both raw (unprocessed) and structured (optimized for querying) data.
 
 ## Why "mini"?
 
-"Mini" because to be a proper Lakehouse many more features would have to be present, like for instance ACID transactios, workflow orchestration, partitioning at scale, etc.
+"Mini" because to be a proper Lakehouse many more features would have to be present, like for instance ACID transactions, workflow orchestration, partitioning at scale, etc.
 
 I intend to create a more complex and fully featured Data Lakehouse later, but for now this was mostly for implementation practice.
 
