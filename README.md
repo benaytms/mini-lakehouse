@@ -35,10 +35,10 @@ API → S3/bronze/ (JSON) → S3/silver/ (Parquet) → PostgreSQL (Gold)
 
 | Tool | Role |
 |---|---|
-| [Docker + Compose](https://docs.docker.com/engine/) | Container orchestration |
+| [Docker + Compose](https://docs.docker.com/engine/) | Containerization |
 | [Terraform](https://developer.hashicorp.com/terraform/docs) | Infrastructure provisioning |
 | [LocalStack](https://docs.localstack.cloud) | Local AWS S3 emulation |
-| [PostgreSQL](https://www.postgresql.org/docs/) | Gold serving layer |
+| [PostgreSQL](https://www.postgresql.org/docs/) | Gold layer |
 | [Python + pandas](https://pandas.pydata.org/) | Data transformation |
 | [uv](https://docs.astral.sh/uv/) | Python package management |
 
