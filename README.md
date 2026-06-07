@@ -3,9 +3,7 @@
 A local data lakehouse implementation built with data engineering tools,
 designed to mirror real-world pipeline architecture at a small scale.
 
-Lakehouse = Data Lake + Data Warehouse.</br>
 Contains both raw (unprocessed) and structured (optimized for querying) data.
-
 
 ---
 
